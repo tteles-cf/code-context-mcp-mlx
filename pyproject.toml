@@ -1,0 +1,25 @@
+[project]
+name = "local-code-context"
+version = "0.1.0"
+description = "Fully local MCP server for code-context retrieval using Qwen3 embeddings via MLX, sqlite-vec, and FTS5."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "mcp[cli]>=1.26.0",
+    "mlx-embeddings>=0.0.5",
+    "sqlite-vec>=0.1.6",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/local_code_context"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[dependency-groups]
+dev = ["pytest>=9.0.2"]
